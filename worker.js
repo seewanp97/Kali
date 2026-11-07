@@ -11,7 +11,7 @@
 
 const PHRASES = [
   // Introductions
-  { tr: "Namaskara", en: "Hello", cat: "Introductions", note: "Greeting, maybe also used for introductions." },
+  { tr: "Namaskara", en: "Hello", cat: "Introductions" },
   { tr: "Nivu haeng idthri?", en: "How are you? (formal)", cat: "Introductions", note: "Formal, use with elders." },
   { tr: "Ni Haeng idd theeri", en: "How are you? (casual)", cat: "Introductions" },
   { tr: "Nuhn hes eru see wan", en: "My name is see wan", cat: "Introductions" },
@@ -20,7 +20,7 @@ const PHRASES = [
 
   // Greetings & replies
   { tr: "Bal Chalo idini", en: "I'm doing very good / I'm doing very well", cat: "Greetings & replies" },
-  { tr: "nanu sakath idthini", en: "I'm doing great (reply to how are you)", cat: "Greetings & replies", note: "Your reply when someone asks how you are." },
+  { tr: "nanu sakath idthini", en: "I'm doing great", cat: "Greetings & replies", note: "Your reply when someone asks how you are." },
   { tr: "Ahram Idthini", en: "I'm fine / I'm relaxed", cat: "Greetings & replies" },
   { tr: "Nanu chuhlo idhini", en: "I'm also doing well", cat: "Greetings & replies" },
   { tr: "Nohd khushi aithoo", en: "Nice to see you", cat: "Greetings & replies" },
@@ -96,6 +96,7 @@ const PHRASES = [
   // Love & teasing
   { tr: "Nanu ninega preethi marthini", en: "I love you", cat: "Love & teasing" },
   { tr: "Nanu ninega bahallah preethi marthini", en: "I love you very much", cat: "Love & teasing" },
+  { tr: "Careh preethi martini", en: "I really love you", cat: "Love & teasing" },
   { tr: "Boo hoag thini", en: "Let's go for a walk (baby talk)", cat: "Love & teasing", note: "Baby talk." },
   { tr: "Gund dah mah", en: "Fat mom", cat: "Love & teasing" },
   { tr: "Nin tali kumlikai", en: "Pumpkin head", cat: "Love & teasing" },
@@ -124,109 +125,113 @@ const PAGE = String.raw`<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#C8102E">
+<meta name="theme-color" content="#A9492A">
 <title>Kali · ಕಲಿ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500;700;800&family=Noto+Sans+Kannada:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Mukta:wght@400;500;700&family=Noto+Serif+Kannada:wght@600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --red:#C8102E; --red-d:#9c0c23; --yellow:#FFD100; --yellow-d:#d9b000;
-  --bg:#FFF8E7; --card:#ffffff; --ink:#2b1d14; --muted:#7a6a5c; --line:#eadfca;
-  --ok:#2e9d4a; --ok-bg:#dff5e3; --bad:#c62828; --bad-bg:#fde3e3;
+  --paper:#F3E9D8; --card:#FBF6EC; --ink:#2E2219; --muted:#7D6A58; --line:#E2D2B8; --thread:rgba(156,69,38,.32);
+  --red:#A9492A; --red-d:#7A3519; --yellow:#D9A23A; --yellow-d:#A87A22; --indigo:#2F3E5C; --indigo-d:#1F2A40;
+  --ok:#5B7F3A; --ok-d:#435F2A; --ok-bg:#E5EAD3; --bad:#A62E2E; --bad-d:#7C2121; --bad-bg:#F3DCD3;
+  --serif:"Fraunces",Georgia,serif; --kn:"Noto Serif Kannada","Noto Sans Kannada",serif;
+  --print:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Crect width='28' height='14' fill='%23A9492A'/%3E%3Cpath d='M14 2l5 5-5 5-5-5z' fill='%23D9A23A'/%3E%3Ccircle cx='14' cy='7' r='1.5' fill='%23A9492A'/%3E%3Ccircle cx='3' cy='7' r='1.3' fill='%23F3E9D8'/%3E%3Ccircle cx='25' cy='7' r='1.3' fill='%23F3E9D8'/%3E%3C/svg%3E");
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .25 0 0 0 0 .14 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
-body{background:var(--bg);color:var(--ink);font-family:Nunito,"Noto Sans Kannada",system-ui,sans-serif;font-size:17px}
-.kn{font-family:"Noto Sans Kannada","Baloo Tamma 2",sans-serif}
+body{background:var(--grain),var(--paper);color:var(--ink);font-family:Mukta,system-ui,sans-serif;font-size:18px;line-height:1.4}
+.kn{font-family:var(--kn)}
 button{font:inherit;color:inherit;cursor:pointer}
 #app{max-width:560px;margin:0 auto;min-height:100%;display:flex;flex-direction:column}
-.flag{height:8px;background:linear-gradient(var(--yellow) 50%,var(--red) 50%)}
-header.top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px}
-.brand{font-family:"Baloo Tamma 2",sans-serif;font-weight:800;font-size:30px;color:var(--red);line-height:1}
-.brand small{font-size:15px;color:var(--muted);font-weight:600;margin-left:6px}
-.stats{display:flex;gap:10px;font-weight:800}
-.pill{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:4px 10px;font-size:15px;white-space:nowrap}
-main{flex:1;padding:0 16px 24px}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 18px}
-.btn{border:none;border-radius:16px;padding:14px 16px;font-weight:800;font-size:16px;box-shadow:0 4px 0 rgba(0,0,0,.18);transition:transform .05s}
-.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.flag{height:14px;background:var(--print);border-bottom:3px solid var(--indigo)}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 16px 12px}
+.brand{font-family:var(--serif);font-weight:700;font-size:32px;color:var(--ink);line-height:1;letter-spacing:-.5px}
+.brand small{font-family:var(--kn);font-size:18px;color:var(--red);font-weight:600;margin-left:8px;letter-spacing:0}
+.stats{display:flex;gap:8px}
+.pill{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;font-size:14px;color:var(--muted);white-space:nowrap}
+.pill b{color:var(--red);font-weight:700;margin-right:2px}
+main{flex:1;padding:0 16px 28px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 22px}
+.btn{border:none;border-radius:12px;padding:13px 16px;font-weight:700;font-size:17px;letter-spacing:.2px;box-shadow:0 3px 0 rgba(0,0,0,.2);transition:transform .05s}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
 .btn[disabled]{opacity:.45;pointer-events:none}
-.btn-red{background:var(--red);color:#fff;box-shadow:0 4px 0 var(--red-d)}
-.btn-yellow{background:var(--yellow);color:var(--ink);box-shadow:0 4px 0 var(--yellow-d)}
-.btn-ghost{background:var(--card);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
-.btn-ok{background:var(--ok);color:#fff;box-shadow:0 4px 0 #1f7536}
-.btn-bad{background:var(--bad);color:#fff;box-shadow:0 4px 0 #8e1b1b}
+.btn-red{background:var(--red);color:#FBF6EC;box-shadow:0 3px 0 var(--red-d)}
+.btn-yellow{background:var(--indigo);color:#FBF6EC;box-shadow:0 3px 0 var(--indigo-d)}
+.btn-ghost{background:var(--card);border:1.5px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn-ok{background:var(--ok);color:#FBF6EC;box-shadow:0 3px 0 var(--ok-d)}
+.btn-bad{background:var(--bad);color:#FBF6EC;box-shadow:0 3px 0 var(--bad-d)}
 .wide{width:100%}
-.unit{background:var(--card);border:2px solid var(--line);border-radius:20px;margin-bottom:16px;overflow:hidden}
-.unit h2{margin:0;padding:12px 16px;background:var(--red);color:#fff;font-family:"Baloo Tamma 2",sans-serif;font-size:20px;display:flex;justify-content:space-between;align-items:center}
-.unit h2 span{font-family:Nunito,sans-serif;font-size:13px;font-weight:700;background:rgba(255,255,255,.2);border-radius:999px;padding:2px 9px}
-.lessons{display:flex;flex-wrap:wrap;gap:12px;padding:14px 16px 16px}
-.lesson-btn{width:64px;height:64px;border-radius:50%;border:none;font-weight:800;font-size:20px;background:var(--yellow);box-shadow:0 5px 0 var(--yellow-d)}
-.lesson-btn.done{background:var(--ok);color:#fff;box-shadow:0 5px 0 #1f7536}
-.lesson-btn.next{outline:4px solid var(--red);outline-offset:3px}
-.lesson-btn:active{transform:translateY(3px);box-shadow:none}
+.unit{background:var(--card);border:1.5px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 2px 0 var(--line)}
+.unit h2{margin:0;padding:12px 16px 10px;background:var(--indigo);color:#FBF6EC;font-family:var(--serif);font-weight:600;font-size:21px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.unit h2 span{font-family:Mukta,sans-serif;font-size:13px;font-weight:500;color:var(--yellow);white-space:nowrap}
+.dotrule{height:7px;background:radial-gradient(circle,var(--yellow) 1.7px,transparent 2.2px) 0 0/10px 7px repeat-x,var(--indigo)}
+.lessons{display:flex;flex-wrap:wrap;gap:14px;padding:18px 18px 20px;margin:8px;border:1.5px dashed var(--thread);border-radius:10px}
+.lesson-btn{width:62px;height:62px;border-radius:50%;border:none;font-family:var(--serif);font-weight:700;font-size:21px;color:#FBF6EC;background:radial-gradient(circle at 35% 30%,#C4683F,var(--red));box-shadow:inset 0 0 0 4px var(--red),inset 0 0 0 5.5px rgba(251,246,236,.55),0 4px 0 var(--red-d)}
+.lesson-btn.done{background:radial-gradient(circle at 35% 30%,#759A52,var(--ok));box-shadow:inset 0 0 0 4px var(--ok),inset 0 0 0 5.5px rgba(251,246,236,.55),0 4px 0 var(--ok-d)}
+.lesson-btn.next{outline:3px solid var(--yellow);outline-offset:4px}
+.lesson-btn:active{transform:translateY(3px)}
 .empty{color:var(--muted);text-align:center;padding:30px 10px}
-/* lesson */
-.lbar{display:flex;align-items:center;gap:12px;padding:14px 16px}
-.x{background:none;border:none;font-size:26px;color:var(--muted);padding:0 4px;line-height:1}
-.prog{flex:1;height:16px;background:var(--line);border-radius:999px;overflow:hidden}
+.lbar{display:flex;align-items:center;gap:12px;padding:16px}
+.x{background:none;border:none;font-size:24px;color:var(--muted);padding:0 4px;line-height:1}
+.prog{flex:1;height:12px;background:var(--line);border-radius:999px;overflow:hidden}
 .prog i{display:block;height:100%;background:var(--red);border-radius:999px;transition:width .3s}
-.hearts{font-weight:800;color:var(--bad);white-space:nowrap}
+.hearts{font-weight:700;color:var(--bad);white-space:nowrap;font-size:18px}
 .ex{flex:1;padding:4px 16px 16px;display:flex;flex-direction:column}
-.ex h3{font-size:20px;margin:6px 0 16px}
-.prompt{display:flex;align-items:center;gap:10px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin-bottom:18px}
-.prompt .big{font-size:26px;font-weight:700;line-height:1.35}
+.ex h3{font-family:var(--serif);font-weight:600;font-size:22px;margin:6px 0 16px}
+.prompt{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px;position:relative}
+.prompt::before{content:"";position:absolute;inset:6px;border:1.5px dashed var(--thread);border-radius:9px;pointer-events:none}
+.prompt .big{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.3}
 .prompt .sub{color:var(--muted);font-size:15px;margin-top:2px}
-.speak{border:none;background:var(--yellow);border-radius:12px;width:44px;height:44px;font-size:20px;flex:none;box-shadow:0 3px 0 var(--yellow-d)}
+.speak{border:none;background:var(--yellow);border-radius:10px;width:44px;height:44px;font-size:20px;flex:none;box-shadow:0 3px 0 var(--yellow-d)}
 .opts{display:grid;gap:10px}
-.opt{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;font-size:18px;box-shadow:0 3px 0 var(--line)}
+.opt{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-size:18px;box-shadow:0 3px 0 var(--line)}
 .opt .sub{display:block;color:var(--muted);font-size:14px}
-.opt.sel{border-color:var(--red);background:#fff1f1;box-shadow:0 3px 0 var(--red)}
-.opt.right{border-color:var(--ok);background:var(--ok-bg)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
-.answer-line{min-height:62px;border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;padding:8px 0;margin-bottom:18px}
+.opt.sel{border-color:var(--red);background:#F7E6DA;box-shadow:0 3px 0 var(--red)}
+.opt.right{border-color:var(--ok);background:var(--ok-bg);box-shadow:0 3px 0 var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);box-shadow:0 3px 0 var(--bad)}
+.answer-line{min-height:62px;border-bottom:1.5px dashed var(--muted);display:flex;flex-wrap:wrap;gap:8px;padding:8px 0;margin-bottom:20px}
 .bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.tile{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:8px 12px;font-size:17px;font-weight:700;box-shadow:0 3px 0 var(--line)}
+.tile{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:7px 12px;font-size:17px;font-weight:500;box-shadow:0 3px 0 var(--line)}
 .tile.used{visibility:hidden}
-textarea{width:100%;min-height:96px;border:2px solid var(--line);border-radius:16px;padding:14px;font:inherit;font-size:19px;background:var(--card);resize:none}
+textarea{width:100%;min-height:96px;border:1.5px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-size:19px;background:var(--card);resize:none}
 textarea:focus{outline:none;border-color:var(--red)}
 .hint{color:var(--muted);font-size:14px;margin-top:8px}
 .match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .match .col{display:grid;gap:10px;align-content:start}
-.mt{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:12px 10px;min-height:56px;font-size:16px;box-shadow:0 3px 0 var(--line)}
-.mt.sel{border-color:var(--red);background:#fff1f1}
-.mt.gone{opacity:.25;pointer-events:none;border-color:var(--ok)}
+.mt{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 10px;min-height:56px;font-size:16px;box-shadow:0 3px 0 var(--line)}
+.mt.sel{border-color:var(--red);background:#F7E6DA}
+.mt.gone{opacity:.3;pointer-events:none;border-color:var(--ok)}
 .mt.wrong{border-color:var(--bad);background:var(--bad-bg)}
-footer.check{padding:16px;border-top:2px solid var(--line);background:var(--bg)}
+footer.check{padding:16px;border-top:1.5px solid var(--line);background:var(--paper)}
 footer.check.ok{background:var(--ok-bg);border-color:var(--ok)}
 footer.check.bad{background:var(--bad-bg);border-color:var(--bad)}
-.fb{font-weight:800;font-size:19px;margin-bottom:4px}
-.fb-ok{color:var(--ok)} .fb-bad{color:var(--bad)}
-.fb-ans{margin-bottom:12px;font-size:16px}
-.fb-note{color:var(--muted);font-size:14px;margin:-6px 0 12px}
-/* results */
+.fb{font-family:var(--serif);font-weight:700;font-size:21px;margin-bottom:4px}
+.fb-ok{color:var(--ok-d)} .fb-bad{color:var(--bad)}
+.fb-ans{margin-bottom:12px;font-size:17px}
+.fb-note{color:var(--ink);opacity:.8;font-size:15px;margin:-4px 0 12px;padding-left:10px;border-left:3px solid var(--yellow)}
 .result{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;gap:10px}
-.result .emoji{font-size:72px}
-.result h2{font-family:"Baloo Tamma 2",sans-serif;font-size:32px;margin:0;color:var(--red)}
-.result .kn-title{font-size:22px;color:var(--muted)}
-.result .row{display:flex;gap:10px;margin:10px 0 18px}
-.result .box{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:10px 16px;font-weight:800;min-width:96px}
-.result .box small{display:block;color:var(--muted);font-weight:600;font-size:13px}
-/* phrasebook */
-.search{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:14px;font:inherit;background:var(--card);margin:4px 0 14px}
+.stamp{width:124px;height:124px;border-radius:50%;display:grid;place-items:center;font-family:var(--kn);font-weight:600;font-size:32px;color:var(--red);border:3px solid var(--red);box-shadow:inset 0 0 0 5px var(--paper),inset 0 0 0 7px var(--red);transform:rotate(-8deg);margin-bottom:10px;opacity:.92}
+.stamp.sad{color:var(--indigo);border-color:var(--indigo);box-shadow:inset 0 0 0 5px var(--paper),inset 0 0 0 7px var(--indigo);font-size:28px}
+.result h2{font-family:var(--serif);font-weight:700;font-size:30px;margin:0;color:var(--ink)}
+.result p{color:var(--muted);margin:0 0 8px}
+.result .row{display:flex;gap:10px;margin:12px 0 18px}
+.result .box{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-family:var(--serif);font-weight:700;font-size:20px;min-width:92px}
+.result .box small{display:block;font-family:Mukta,sans-serif;color:var(--muted);font-weight:500;font-size:13px}
+.search{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:var(--card);margin:4px 0 14px}
 .search:focus{outline:none;border-color:var(--red)}
-.cat-h{font-family:"Baloo Tamma 2",sans-serif;color:var(--red);font-size:20px;margin:14px 0 6px}
-.pb{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.cat-h{font-family:var(--serif);font-weight:600;color:var(--indigo);font-size:21px;margin:18px 0 8px;padding-bottom:4px;border-bottom:1.5px dashed var(--thread)}
+.pb{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
 .pb .main{flex:1;min-width:0}
-.pb .k{font-size:20px;font-weight:700}
+.pb .k{font-family:var(--serif);font-size:20px;font-weight:600}
 .pb .t{color:var(--muted);font-size:15px}
 .pb .e{font-size:16px;margin-top:2px}
-.pb .n{font-size:14px;color:var(--muted);background:var(--bg);border-left:3px solid var(--yellow);padding:4px 8px;margin-top:6px;border-radius:4px}
-.dots{display:flex;gap:3px;margin-top:6px}
-.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.pb .n{font-size:14px;color:var(--ink);opacity:.8;border-left:3px solid var(--yellow);padding:2px 8px;margin-top:6px}
+.dots{display:flex;gap:4px;margin-top:8px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
 .dots i.on{background:var(--ok)}
-.back{background:none;border:none;font-weight:800;color:var(--red);font-size:16px;padding:0}
+.back{background:none;border:none;font-weight:700;color:var(--red);font-size:16px;padding:0}
 </style>
 </head>
 <body>
@@ -376,7 +381,7 @@ function mount(nodes) { app.innerHTML = ''; nodes.forEach(function (n) { if (n) 
 function topBar() {
   return h('header', { class: 'top' }, [
     h('div', { class: 'brand' }, ['Kali', h('small', { class: 'kn', text: 'ಕಲಿ' })]),
-    h('div', { class: 'stats' }, [h('span', { class: 'pill', text: '🔥 ' + streakNow() }), h('span', { class: 'pill', text: '⭐ ' + P.xp + ' XP' })])
+    h('div', { class: 'stats' }, [h('span', { class: 'pill' }, [h('b', { text: String(streakNow()) }), ' day streak']), h('span', { class: 'pill' }, [h('b', { text: String(P.xp) }), ' XP'])])
   ]);
 }
 
@@ -387,7 +392,7 @@ function renderHome() {
   var units = UNITS.map(function (u) {
     var doneCount = u.lessons.filter(function (l) { return P.done[l.id]; }).length;
     return h('section', { class: 'unit' }, [
-      h('h2', {}, [u.name, h('span', { text: doneCount + '/' + u.lessons.length })]),
+      h('h2', {}, [u.name, h('span', { text: doneCount + ' of ' + u.lessons.length })]), h('div', { class: 'dotrule' }),
       h('div', { class: 'lessons' }, u.lessons.map(function (l) {
         var cls = 'lesson-btn';
         if (P.done[l.id]) cls += ' done';
@@ -399,8 +404,8 @@ function renderHome() {
   });
   mount([h('div', { class: 'flag' }), topBar(), h('main', {}, [
     h('div', { class: 'actions' }, [
-      h('button', { class: 'btn btn-yellow', text: '💪 Practice weak', disabled: PHRASES.length < 2, onclick: practiceWeak }),
-      h('button', { class: 'btn btn-ghost', text: '📖 Phrasebook', onclick: renderBook })
+      h('button', { class: 'btn btn-yellow', text: 'Practice weak', disabled: PHRASES.length < 2, onclick: practiceWeak }),
+      h('button', { class: 'btn btn-ghost', text: 'Phrasebook', onclick: renderBook })
     ])
   ].concat(units.length ? units : [h('p', { class: 'empty', text: 'No phrases yet. Add some to PHRASES in worker.js.' })]))]);
 }
@@ -423,7 +428,7 @@ function renderLesson() {
   var bar = h('div', { class: 'lbar' }, [
     h('button', { class: 'x', 'aria-label': 'Quit lesson', text: '✕', onclick: function () { if (state.pos === 0 || confirm('Quit this lesson? Progress in it will be lost.')) renderHome(); } }),
     h('div', { class: 'prog' }, [h('i', { style: 'width:' + pct + '%' })]),
-    h('div', { class: 'hearts', text: '❤️ ' + state.hearts })
+    h('div', { class: 'hearts', text: '\u2665\uFE0E ' + state.hearts })
   ]);
   var body = h('div', { class: 'ex' });
   state.answer = null;
@@ -550,19 +555,19 @@ function grade() {
   state.opts = null;
   if (ok) {
     f.className = 'check ok';
-    f.appendChild(h('div', { class: 'fb fb-ok', text: pick(['Shabhash! 🎉', 'Correct!', 'Chennagide! ✨', 'Nice!'], 1)[0] }));
+    f.appendChild(h('div', { class: 'fb fb-ok', text: pick(['Shabhash!', 'Correct.', 'Chennagide!', 'Nicely done.'], 1)[0] }));
     if (ex.type === 'type' && normTr(state.answer) !== normTr(alts(ex.p.tr)[0])) f.appendChild(h('div', { class: 'fb-ans kn', text: correctText(ex) }));
-    if (ex.p && ex.p.note) f.appendChild(h('div', { class: 'fb-note', text: '📝 ' + ex.p.note }));
+    if (ex.p && ex.p.note) f.appendChild(h('div', { class: 'fb-note', text: ex.p.note }));
   } else {
     state.hearts--; state.mistakes++;
     state.queue.push(ex.type === 'kn2en' || ex.type === 'en2kn' ? makeEx(ex.p, ex.type) : ex);
     f.className = 'check bad';
     f.appendChild(h('div', { class: 'fb fb-bad', text: 'Not quite' }));
     f.appendChild(h('div', { class: 'fb-ans kn' }, [h('b', { text: 'Answer: ' }), correctText(ex)]));
-    if (ex.p.note) f.appendChild(h('div', { class: 'fb-note', text: '📝 ' + ex.p.note }));
+    if (ex.p.note) f.appendChild(h('div', { class: 'fb-note', text: ex.p.note }));
   }
   save();
-  var hearts = app.querySelector('.hearts'); if (hearts) hearts.textContent = '❤️ ' + state.hearts;
+  var hearts = app.querySelector('.hearts'); if (hearts) hearts.textContent = '\u2665\uFE0E ' + state.hearts;
   var cont = h('button', { class: 'btn wide ' + (ok ? 'btn-ok' : 'btn-bad'), text: 'Continue', onclick: next });
   f.appendChild(cont);
   if (ex.type !== 'type') cont.focus();
@@ -585,13 +590,13 @@ function renderDone() {
   save();
   var replay = state.phrases, id = state.id, title = state.title;
   mount([h('div', { class: 'flag' }), h('div', { class: 'result' }, [
-    h('div', { class: 'emoji', text: perfect ? '🏆' : '🎉' }),
+    h('div', { class: 'stamp', text: 'ಭಲೇ' }),
     h('h2', { text: 'Lesson complete!' }),
-    h('div', { class: 'kn-title kn', text: 'ಭಲೇ!' }),
+    h('p', { text: perfect ? 'Not a single slip.' : 'Well done.' }),
     h('div', { class: 'row' }, [
       h('div', { class: 'box' }, [h('small', { text: 'XP' }), '+' + gained]),
       h('div', { class: 'box' }, [h('small', { text: 'Accuracy' }), Math.round(100 * state.total / (state.total + state.mistakes)) + '%']),
-      h('div', { class: 'box' }, [h('small', { text: 'Streak' }), '🔥 ' + P.streak])
+      h('div', { class: 'box' }, [h('small', { text: 'Streak' }), P.streak + (P.streak === 1 ? ' day' : ' days')])
     ]),
     h('button', { class: 'btn btn-red wide', text: 'Continue', onclick: renderHome }),
     h('button', { class: 'btn btn-ghost wide', text: 'Practice again', onclick: function () { startLesson(replay, id, title); } })
@@ -600,7 +605,7 @@ function renderDone() {
 function renderOut() {
   var replay = state.phrases, id = state.id, title = state.title;
   mount([h('div', { class: 'flag' }), h('div', { class: 'result' }, [
-    h('div', { class: 'emoji', text: '💔' }),
+    h('div', { class: 'stamp sad', text: 'ಅಯ್ಯೋ' }),
     h('h2', { text: 'Out of hearts' }),
     h('p', { text: 'No worries. Every mistake helps you remember.' }),
     h('button', { class: 'btn btn-red wide', text: 'Try again', onclick: function () { startLesson(replay, id, title); } }),
@@ -645,7 +650,7 @@ function renderBook() {
   draw();
   mount([h('div', { class: 'flag' }), topBar(), h('main', {}, [
     h('button', { class: 'back', text: '← Back', onclick: renderHome }),
-    h('p', { class: 'hint', text: PHRASES.length + ' phrases' + (knVoice ? '' : ' · no Kannada voice on this device, so audio is off') }),
+    h('p', { class: 'hint', text: PHRASES.length + ' phrases' + (knVoice || !PHRASES.some(function (p) { return p.kn; }) ? '' : ' · no Kannada voice on this device, so audio is off') }),
     input, list
   ])]);
 }
