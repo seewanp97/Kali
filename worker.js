@@ -10,19 +10,113 @@
 //   note dialect / usage remark (optional)
 
 const PHRASES = [
-  { kn: "ನಮಸ್ಕಾರ", tr: "namaskāra", en: "Hello / Greetings", cat: "Everyday" },
-  { kn: "ಊಟ ಆಯ್ತಾ?", tr: "ūṭa āytā?", en: "Have you eaten?", cat: "Everyday", note: "A common way to say hello." },
-  { kn: "ಹೇಗಿದ್ದೀರಾ?", tr: "hēgiddīrā?", en: "How are you? (respectful)", cat: "Everyday" },
-  { kn: "ಚೆನ್ನಾಗಿದ್ದೀನಿ", tr: "chennāgiddīni", en: "I am fine / I'm fine / I am well", cat: "Everyday" },
-  { kn: "ಧನ್ಯವಾದ", tr: "dhanyavāda", en: "Thank you / Thanks", cat: "Everyday" },
-  { kn: "ಎಲ್ಲಿಗೆ ಹೋಗ್ತಾ ಇದ್ದೀರಾ?", tr: "ellige hōgtā iddīrā?", en: "Where are you going?", cat: "Getting around" },
-  { kn: "ಬನ್ನಿ", tr: "banni", en: "Come (respectful) / Come in", cat: "Getting around" },
-  { kn: "ಸ್ವಲ್ಪ ನಿಲ್ಲಿ", tr: "svalpa nilli", en: "Wait a little / Stop for a bit", cat: "Getting around" },
-  { kn: "ಎಷ್ಟು?", tr: "eṣṭu?", en: "How much?", cat: "Getting around" },
-  { kn: "ಗೊತ್ತಿಲ್ಲ", tr: "gottilla", en: "I don't know", cat: "Getting around" },
-  { kn: "ನಿಮ್ಮ ಹೆಸರೇನು?", tr: "nimma hesarēnu?", en: "What is your name? / What's your name?", cat: "People" },
-  { kn: "ಅಮ್ಮ", tr: "amma", en: "Mother / Mom", cat: "People" },
-  { kn: "ಅಪ್ಪ", tr: "appa", en: "Father / Dad", cat: "People" },
+  // Introductions
+  { tr: "Namaskara", en: "Hello", cat: "Introductions", note: "Greeting, maybe also used for introductions." },
+  { tr: "Nivu haeng idthri?", en: "How are you? (formal)", cat: "Introductions", note: "Formal, use with elders." },
+  { tr: "Ni Haeng idd theeri", en: "How are you? (casual)", cat: "Introductions" },
+  { tr: "Nuhn hes eru see wan", en: "My name is see wan", cat: "Introductions" },
+  { tr: "Nim hesri yenoo?", en: "What is your name? / What's your name?", cat: "Introductions" },
+  { tr: "Kannada kahlili kathini", en: "I'm learning Kannada / I am learning Kannada", cat: "Introductions" },
+
+  // Greetings & replies
+  { tr: "Bal Chalo idini", en: "I'm doing very good / I'm doing very well", cat: "Greetings & replies" },
+  { tr: "nanu sakath idthini", en: "I'm doing great (reply to how are you)", cat: "Greetings & replies", note: "Your reply when someone asks how you are." },
+  { tr: "Ahram Idthini", en: "I'm fine / I'm relaxed", cat: "Greetings & replies" },
+  { tr: "Nanu chuhlo idhini", en: "I'm also doing well", cat: "Greetings & replies" },
+  { tr: "Nohd khushi aithoo", en: "Nice to see you", cat: "Greetings & replies" },
+  { tr: "Dhan ya vaduhguhloo", en: "Thank you / Thanks", cat: "Greetings & replies" },
+  { tr: "Nidthi ai thoo?", en: "Did you sleep well?", cat: "Greetings & replies" },
+  { tr: "Nidthee bandth", en: "I'm sleepy / I need to close my eyes", cat: "Greetings & replies" },
+  { tr: "Hoag bardthini", en: "I'm leaving and coming back", cat: "Greetings & replies", note: "Always say this when leaving." },
+  { tr: "Sokkash drive madri", en: "Drive safely", cat: "Greetings & replies" },
+
+  // Food & drink
+  { tr: "Hasiv agetha", en: "I'm hungry", cat: "Food & drink" },
+  { tr: "Ooh tta aightoo?", en: "Did you eat?", cat: "Food & drink" },
+  { tr: "Ooh tta aitth", en: "Yes I ate", cat: "Food & drink" },
+  { tr: "Hotti tthumbeda", en: "I'm full", cat: "Food & drink" },
+  { tr: "Hotti thum tha?", en: "Are you full?", cat: "Food & drink" },
+  { tr: "Ootta", en: "Food", cat: "Food & drink" },
+  { tr: "Ootta beikah?", en: "Do you want food?", cat: "Food & drink" },
+  { tr: "Unna muhsru", en: "Yogurt rice", cat: "Food & drink" },
+  { tr: "Kohli", en: "Chicken", cat: "Food & drink" },
+  { tr: "near", en: "Water", cat: "Food & drink" },
+  { tr: "Beer beiku", en: "I want beer", cat: "Food & drink" },
+  { tr: "Bar hoghana? Kudi thivi", en: "Should we go to a bar? We're going to drink", cat: "Food & drink" },
+  { tr: "Kooh ree ahna", en: "Should we drink?", cat: "Food & drink" },
+  { tr: "Sohkash KUdoo", en: "Eat slowly", cat: "Food & drink", note: "Say this ONLY when you made the food you're serving." },
+  { tr: "Inna soulpa thogori", en: "Take some more", cat: "Food & drink" },
+
+  // Reactions
+  { tr: "Chuh-lo", en: "Very good", cat: "Reactions" },
+  { tr: "Bhaahla chal-o ada", en: "This is very good", cat: "Reactions" },
+  { tr: "Chuh-lo aith", en: "It was good / It went well", cat: "Reactions", note: "Use in response to questions." },
+  { tr: "Musth aighth", en: "It was excellent", cat: "Reactions" },
+  { tr: "Sak khath aighth", en: "It was fantastic", cat: "Reactions", note: "Even more than excellent." },
+  { tr: "Musth irtadha", en: "It's gonna be awesome / It's going to be awesome", cat: "Reactions" },
+  { tr: "Ayepah", en: "Ouch / Oh my gosh", cat: "Reactions" },
+  { tr: "Ashttae nah?", en: "That's it?", cat: "Reactions", note: "Can refer to someone not drinking enough." },
+  { tr: "Athein godthila", en: "I don't know what you just said", cat: "Reactions" },
+
+  // Little words
+  { tr: "Ni", en: "You", cat: "Little words" },
+  { tr: "Nanu", en: "Me / I", cat: "Little words" },
+  { tr: "Bal", en: "Very", cat: "Little words" },
+  { tr: "Bah la", en: "Too much", cat: "Little words" },
+  { tr: "Juldi", en: "Quickly", cat: "Little words" },
+  { tr: "Careh", en: "Really", cat: "Little words" },
+  { tr: "Ashtek ashteh", en: "So-so", cat: "Little words" },
+  { tr: "Sol pe sulp", en: "Little bit / A little bit", cat: "Little words" },
+  { tr: "Huldi", en: "Yellow", cat: "Little words" },
+  { tr: "Aklaa", en: "Cow", cat: "Little words" },
+  { tr: "Bli mundi", en: "White person", cat: "Little words" },
+  { tr: "Kuhree mundi", en: "Black person", cat: "Little words" },
+
+  // Bathroom
+  { tr: "Suhn daas yal la da", en: "Where is the bathroom?", cat: "Bathroom" },
+  { tr: "Sun das hoag beiku, hoos bandth", en: "I have to shit, I just farted", cat: "Bathroom" },
+  { tr: "Hooos", en: "Fart", cat: "Bathroom" },
+  { tr: "Uchi", en: "Pee", cat: "Bathroom" },
+  { tr: "Moothra", en: "Pee", cat: "Bathroom" },
+  { tr: "Ugooloo", en: "Spit", cat: "Bathroom" },
+
+  // Asking & handy patterns
+  { tr: "Yain idthu?", en: "What is that?", cat: "Asking & patterns" },
+  { tr: "Yain madlikathivi?", en: "What are we doing today?", cat: "Asking & patterns" },
+  { tr: "Nung kellu", en: "Ask me", cat: "Asking & patterns" },
+  { tr: "___ haeng aigth?", en: "How is ___?", cat: "Asking & patterns" },
+  { tr: "___ adtha", en: "It's ___", cat: "Asking & patterns" },
+  { tr: "___ beikri nungeh", en: "Can I please have ___", cat: "Asking & patterns" },
+  { tr: "Inna soulpa _____ kodthira please", en: "Can I please have some more ___", cat: "Asking & patterns" },
+  { tr: "Adthey kohdoo", en: "Give me that one", cat: "Asking & patterns" },
+  { tr: "Idthey kohdoo", en: "Gimme this one / Give me this one", cat: "Asking & patterns" },
+  { tr: "Na sari thiri", en: "I will get out the way / I will get out of the way", cat: "Asking & patterns" },
+  { tr: "Nana gu nu___", en: "I'm also ___", cat: "Asking & patterns" },
+
+  // Love & teasing
+  { tr: "Nanu ninega preethi marthini", en: "I love you", cat: "Love & teasing" },
+  { tr: "Nanu ninega bahallah preethi marthini", en: "I love you very much", cat: "Love & teasing" },
+  { tr: "Boo hoag thini", en: "Let's go for a walk (baby talk)", cat: "Love & teasing", note: "Baby talk." },
+  { tr: "Gund dah mah", en: "Fat mom", cat: "Love & teasing" },
+  { tr: "Nin tali kumlikai", en: "Pumpkin head", cat: "Love & teasing" },
+  { tr: "Ninthali judge-lee", en: "Let me bang your head", cat: "Love & teasing" },
+  { tr: "Kkgai curry thi nee", en: "I'll bite your hand", cat: "Love & teasing" },
+
+  // Bad words
+  { tr: "Hooch solemaga", en: "Crazy bastard", cat: "Bad words (not for adults)", note: "Don't say to anyone." },
+  { tr: "Shaatha", en: "Pubes", cat: "Bad words (not for adults)" },
+  { tr: "Shaatha thun du", en: "It brought me pubes", cat: "Bad words (not for adults)", note: "Say it like \"shit\"." },
+  { tr: "Shaatha tehrri", en: "Go shave your pubes and come back", cat: "Bad words (not for adults)" },
+  { tr: "Shaatha Nuhn maga", en: "Son of a pube", cat: "Bad words (not for adults)" },
+  { tr: "Thikka moochoo", en: "Shut your ass / STFU", cat: "Bad words (not for adults)" },
+  { tr: "Hoocha", en: "Crazy person", cat: "Bad words (not for adults)", note: "As in \"aye hootcha\" (to Sachin)." },
+  { tr: "Hooch run dhey gatta", en: "Son of a prostitute", cat: "Bad words (not for adults)" },
+  { tr: "Hooch rund thi", en: "Crazy slut", cat: "Bad words (not for adults)" },
+  { tr: "Ttoon inah", en: "Man, wtf", cat: "Bad words (not for adults)" },
+  { tr: "Choothia", en: "Coochie", cat: "Bad words (not for adults)", note: "Hindi." },
+  { tr: "Wadthuvannahakthini", en: "I'm gonna kick you out and hang you out to dry", cat: "Bad words (not for adults)" },
+  { tr: "A a soodli", en: "Let it burn", cat: "Bad words (not for adults)", note: "Good or bad depending on context." },
+  { tr: "Too nina henayethli", en: "I'm gonna spit on you and lift up your corpse", cat: "Bad words (not for adults)" },
 ];
 
 const PAGE = String.raw`<!doctype html>
@@ -196,8 +290,9 @@ var UNITS = [];
   });
   UNITS.forEach(function (u) {
     u.lessons = [];
-    for (var i = 0; i < u.phrases.length; i += LESSON_SIZE) {
-      u.lessons.push({ id: u.name + '#' + (i / LESSON_SIZE), num: i / LESSON_SIZE + 1, phrases: u.phrases.slice(i, i + LESSON_SIZE) });
+    var count = Math.ceil(u.phrases.length / LESSON_SIZE), size = Math.ceil(u.phrases.length / count);
+    for (var i = 0; i < count; i++) {
+      u.lessons.push({ id: u.name + '#' + i, num: i + 1, phrases: u.phrases.slice(i * size, (i + 1) * size) });
     }
   });
 })();
@@ -230,11 +325,11 @@ function speakBtn(p) {
 function distractors(p, n, field) {
   var same = PHRASES.filter(function (q) { return q !== p && q.cat === p.cat; });
   var other = PHRASES.filter(function (q) { return q !== p && q.cat !== p.cat; });
-  var seen = {}; seen[field === 'en' ? normEn(p.en) : display(p)] = 1;
+  var seen = {}, seenEn = {}; seen[display(p)] = 1; seenEn[normEn(p.en)] = 1;
   var out = [];
   shuffle(same).concat(shuffle(other)).forEach(function (q) {
-    var k = field === 'en' ? normEn(q.en) : display(q);
-    if (out.length < n && !seen[k]) { seen[k] = 1; out.push(q); }
+    var k = display(q), e = normEn(q.en);
+    if (out.length < n && !seen[k] && !seenEn[e]) { seen[k] = 1; seenEn[e] = 1; out.push(q); }
   });
   return out;
 }
@@ -370,7 +465,7 @@ function renderLesson() {
     ta.addEventListener('input', function () { state.answer = ta.value; setReady(ta.value.trim().length > 0); });
     ta.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); if (state.phase === 'answer' && !checkBtn.disabled) grade(); else if (state.phase === 'feedback') next(); } });
     body.appendChild(ta);
-    body.appendChild(h('div', { class: 'hint', text: 'Accents are optional (a = ā). Small typos are OK.' }));
+    body.appendChild(h('div', { class: 'hint', text: 'Spacing, capitals and small typos are OK.' }));
     setTimeout(function () { ta.focus(); }, 50);
   } else if (ex.type === 'tiles') {
     body.appendChild(h('h3', { text: 'Translate into English' }));
@@ -404,7 +499,7 @@ function renderLesson() {
         if (sel) sel.btn.classList.remove('sel');
         sel = { btn: btn, p: p, side: side }; btn.classList.add('sel'); return;
       }
-      if (sel.p === p) {
+      if (sel.p === p || normEn(sel.p.en) === normEn(p.en)) {
         sel.btn.classList.remove('sel'); sel.btn.classList.add('gone'); btn.classList.add('gone'); sel = null;
         if (--left2go === 0) { state.answer = true; grade(); }
       } else {
@@ -427,8 +522,9 @@ function isCorrect(ex, ans) {
   if (ex.type === 'kn2en' || ex.type === 'en2kn') return ans === ex.p || (ex.type === 'kn2en' ? normEn(ans.en) === normEn(ex.p.en) : display(ans) === display(ex.p));
   if (ex.type === 'tiles') { var a = normEn(ans); return alts(ex.p.en).some(function (x) { return normEn(x) === a; }); }
   if (ex.type === 'type') {
-    var t = normTr(ans);
-    return alts(ex.p.tr).some(function (x) { var n = normTr(x); return lev(t, n) <= Math.floor(n.length / 8); });
+    var t = normTr(ans).replace(/ /g, ''), key = normEn(ex.p.en);
+    var ok = PHRASES.filter(function (q) { return q.tr && normEn(q.en) === key; });
+    return ok.some(function (q) { return alts(q.tr).some(function (x) { var n = normTr(x).replace(/ /g, ''); return lev(t, n) <= Math.floor(n.length / 8); }); });
   }
   return false;
 }
